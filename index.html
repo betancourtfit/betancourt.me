@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a Mi Mundo</h1>
+        <p>Explora mis contenidos sobre Finanzas Personales, Growth Marketing y más.</p>
+        <div class="buttons">
+            <button class="button" onclick="navigateTo('medium')">Medium</button>
+            <button class="button" onclick="navigateTo('youtube')">YouTube</button>
+            <button class="button" onclick="navigateTo('spotify')">Spotify</button>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(platform) {
+            const urls = {
+                medium: 'https://medium.com/@betancourt',
+                youtube: 'https://www.youtube.com/channel/UCUqiO-gV4M0DEnC-ng0SShg',
+                spotify: 'https://spotify.com'
+            };
+            window.open(urls[platform], '_blank');
+        }
+    </script>
+</body>
+</html>
