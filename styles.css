@@ -1,64 +1,95 @@
+/* Paleta de colores */
+:root {
+    --alice-blue: #D9F0FF;
+    --light-sky-blue-1: #A3D5FF;
+    --light-sky-blue-2: #83C9F4;
+    --medium-slate-blue: #6F73D2;
+    --glaucous: #7681B3;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(120deg, #222, #333);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    background-color: var(--alice-blue);
+    color: var(--glaucous);
 }
 
-.container {
+header {
     text-align: center;
-    animation: fadeIn 2s ease-in-out;
+    padding: 1rem 0;
+    background-color: var(--light-sky-blue-1);
+    color: var(--alice-blue);
 }
 
-h1 {
-    font-size: 3rem;
-    margin: 0.5em 0;
-    background: -webkit-linear-gradient(#6a5acd, #00c9ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+header h1 {
+    margin: 0;
+    font-size: 2rem;
 }
 
-p {
-    font-size: 1.2rem;
-    margin: 1em 0;
-    color: #ccc;
+main {
+    padding: 2rem;
 }
 
-.buttons {
+.carousel-section {
+    margin-bottom: 2rem;
+}
+
+.carousel-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--medium-slate-blue);
+}
+
+.carousel {
     display: flex;
-    gap: 1em;
-    justify-content: center;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--light-sky-blue-2);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.button {
-    padding: 0.8em 1.5em;
-    border: none;
+.card {
+    flex: 0 0 auto;
+    width: 200px;
+    background-color: var(--light-sky-blue-1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+}
+
+.card img.card-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
     border-radius: 5px;
-    cursor: pointer;
+    margin-bottom: 1rem;
+    background-color: var(--alice-blue); /* Fondo mientras carga */
+}
+
+.card h3 {
     font-size: 1rem;
-    color: #fff;
-    background: #6a5acd;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 0 0.5rem;
+    color: var(--medium-slate-blue);
 }
 
-.button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(106, 90, 205, 0.4);
+.card .cta {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--medium-slate-blue);
+    color: var(--alice-blue);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.card .cta:hover {
+    background-color: var(--glaucous);
+    color: var(--alice-blue);
 }
