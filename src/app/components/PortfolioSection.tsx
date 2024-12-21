@@ -4,14 +4,22 @@ import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import db from "../firebase";
 
+// Define el tipo al inicio del archivo
+type PortfolioItem = {
+  title: string;
+  description: string;
+  url: string;
+  category: string;
+};
+
 export default function PortfolioSection() {
-  const [content, setContent] = useState([]);
+  const [content, setContent] = useState<PortfolioItem[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "PORTFOLIO"));
-        const data = querySnapshot.docs.map(doc => doc.data());
+        const data = querySnapshot.docs.map((doc) => doc.data() as PortfolioItem);
         console.log("Data:", data);
         setContent(data);
       } catch (error) {
