@@ -1,9 +1,5 @@
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  experimental: {
-    logging: true, // Habilitar logs detallados
-  },
+  reactStrictMode: true
 };
 
 export default nextConfig;
