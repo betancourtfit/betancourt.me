@@ -12,3 +12,6 @@ logs/
 # Environment variables
 .env.local
 .env
+
+# Carpeta Scripts
+scripts/

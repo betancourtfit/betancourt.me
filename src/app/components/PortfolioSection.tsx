@@ -29,24 +29,33 @@ export default function PortfolioSection() {
     fetchData();
   }, []);
 
+  // Agrupa los elementos por categoría
+  const groupedContent = content.reduce((acc: Record<string, PortfolioItem[]>, item) => {
+    if (!acc[item.category]) {
+      acc[item.category] = [];
+    }
+    acc[item.category].push(item);
+    return acc;
+  }, {});
+
   return (
-    <section id="portfolio">
-      <h2>Portafolio</h2>
-      <div className="grid">
-        {content.length > 0 ? (
-          content.map((item, index) => (
-            <div key={index} className="card">
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <a href={item.url} target="_blank" rel="noopener noreferrer">
-                Leer más
-              </a>
-            </div>
-          ))
-        ) : (
-          <p>Cargando contenido...</p>
-        )}
-      </div>
-    </section>
+    <div>
+      {Object.entries(groupedContent).map(([category, items]) => (
+        <section key={category} id={category.toLowerCase().replace(/\s+/g, "-")}>
+          <h2>{category}</h2>
+          <div className="grid">
+            {items.map((item, index) => (
+              <div key={index} className="card">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  Leer más
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
   );
 }
