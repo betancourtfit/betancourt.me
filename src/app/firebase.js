@@ -18,6 +18,10 @@ const firebaseConfig = {
   measurementId: "G-Z8CPSTK641"
 };
 
+if (!firebaseConfig.projectId) {
+  throw new Error("El Project ID de Firebase no está configurado correctamente.");
+}
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
