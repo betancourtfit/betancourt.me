@@ -7,9 +7,9 @@ import db from "../firebase";
 // Define el tipo al inicio del archivo
 type PortfolioItem = {
   title: string;
-  description: string;
   url: string;
   category: string;
+  image?: string; // Parámetro opcional para la imagen
 };
 
 export default function PortfolioSection() {
@@ -31,10 +31,12 @@ export default function PortfolioSection() {
 
   // Agrupa los elementos por categoría
   const groupedContent = content.reduce((acc: Record<string, PortfolioItem[]>, item) => {
-    if (!acc[item.category]) {
-      acc[item.category] = [];
+    if (item.image) { // Filtrar items sin imagen
+      if (!acc[item.category]) {
+        acc[item.category] = [];
+      }
+      acc[item.category].push(item);
     }
-    acc[item.category].push(item);
     return acc;
   }, {});
 
@@ -46,11 +48,15 @@ export default function PortfolioSection() {
           <div className="grid">
             {items.map((item, index) => (
               <div key={index} className="card">
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
-                  Leer más
-                </a>
+                <div className="image-container">
+                  <img src={item.image} alt={item.title} />
+                </div>
+                <div className="card-content">
+                  <h3>{item.title}</h3>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    Leer más
+                  </a>
+                </div>
               </div>
             ))}
           </div>
