@@ -1,44 +1,11 @@
-"use client";
+import { getPortfolioData, groupPortfolioByCategory } from '../../lib/portfolio'
+import { type PortfolioItem } from '../../lib/sanity'
 
-import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import db from "../firebase";
-
-// Define el tipo al inicio del archivo
-type PortfolioItem = {
-  title: string;
-  url: string;
-  category: string;
-  image?: string; // Parámetro opcional para la imagen
-};
-
-export default function PortfolioSection() {
-  const [content, setContent] = useState<PortfolioItem[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "PORTFOLIO"));
-        const data = querySnapshot.docs.map((doc) => doc.data() as PortfolioItem);
-        console.log("Data:", data);
-        setContent(data);
-      } catch (error) {
-        console.error("Error al recuperar datos:", error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  // Agrupa los elementos por categoría
-  const groupedContent = content.reduce((acc: Record<string, PortfolioItem[]>, item) => {
-    if (item.image) { // Filtrar items sin imagen
-      if (!acc[item.category]) {
-        acc[item.category] = [];
-      }
-      acc[item.category].push(item);
-    }
-    return acc;
-  }, {});
+// This is now a Server Component with ISR
+export default async function PortfolioSection() {
+  // Fetch data on the server side
+  const portfolioItems = await getPortfolioData()
+  const groupedContent = groupPortfolioByCategory(portfolioItems)
 
   return (
     <div>
@@ -46,7 +13,7 @@ export default function PortfolioSection() {
         <section key={category} id={category.toLowerCase().replace(/\s+/g, "-")}>
           <h2>{category}</h2>
           <div className="grid">
-            {items.map((item, index) => (
+            {items.map((item: PortfolioItem, index: number) => (
               <div key={index} className="card">
                 <div className="image-container">
                   <img src={item.image} alt={item.title} />
@@ -63,5 +30,5 @@ export default function PortfolioSection() {
         </section>
       ))}
     </div>
-  );
+  )
 }
