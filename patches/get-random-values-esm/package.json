@@ -1,0 +1,19 @@
+{
+  "name": "get-random-values-esm",
+  "version": "1.0.3",
+  "description": "Patched WebCrypto getRandomValues wrapper without legacy global fallback.",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "browser": "./index.mjs",
+      "node": "./index.cjs",
+      "default": "./index.js"
+    }
+  },
+  "main": "./index.js",
+  "module": "./index.mjs",
+  "browser": "./index.mjs",
+  "types": "./index.d.ts"
+}
