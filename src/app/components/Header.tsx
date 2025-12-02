@@ -1,10 +1,8 @@
 export default function Header() {
-    return (
-      <header>
-        <div className="logo">Betancourt</div>
-        <nav>
-        </nav>
-      </header>
-    );
-  }
-  
+  return (
+    <header>
+      <div className="logo">Betancourt</div>
+      {/* Navigation removed - single-page portfolio design */}
+    </header>
+  );
+}

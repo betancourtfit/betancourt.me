@@ -1,0 +1,52 @@
+/* HeroSection Component Styles */
+
+.heroSection {
+  text-align: center;
+  padding: 20px;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.profileImage {
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  margin-bottom: 20px;
+}
+
+.socialContainer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Social Icon Styles */
+.socialIcon {
+  font-size: 30px;
+  transition: transform 0.2s ease, opacity 0.8s ease;
+}
+
+.socialIcon:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.socialIconLinkedin {
+  color: #0e76a8;
+}
+
+.socialIconTwitter {
+  color: #1DA1F2;
+}
+
+.socialIconInstagram {
+  color: #E1306C;
+}
+
+.socialIconGithub {
+  color: #333;
+}
